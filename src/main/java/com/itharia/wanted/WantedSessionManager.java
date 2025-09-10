@@ -160,7 +160,7 @@ public final class WantedSessionManager implements Listener {
             if(plugin.settings().witnessEnabled()) startWitness(p); else startWanted(p);
         }
 
-        private Component amp(String s){ return LegacyComponentSerializer.legacyAmpersand().deserialize(s==null?\"\":s); }
+        private Component amp(String s){ return LegacyComponentSerializer.legacyAmpersand().deserialize(s==null?"":s); }
         private Title.Times tt(){ return Title.Times.times(
                 java.time.Duration.ofMillis(plugin.settings().titleFadeInMs()),
                 java.time.Duration.ofMillis(plugin.settings().titleStayMs()),
