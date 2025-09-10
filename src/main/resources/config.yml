@@ -1,0 +1,85 @@
+# ===========================
+# Wanted — Config (Paper 1.21.6, Java 21)
+# ===========================
+# 20 ticks = 1 second.
+
+debug: false
+trigger_containers: [ CHEST, TRAPPED_CHEST, BARREL ]
+
+display:
+  mode: bossbar
+  auto_hide_ticks: 1200
+  bossbar:    { color: RED,  style: SOLID }
+  scoreboard: { title: "&cWANTED", use_divider: true }
+
+witness:
+  enabled: true
+  duration_seconds: 15
+  title: "&cYou've been caught stealing!"
+  nearby_title: "Someone was caught stealing"
+  bossbar_text: "&4&lKill the witness before he reports you"
+  flee_speed: 0.0
+  sound: ENTITY_WARDEN_HEARTBEAT
+  sound_volume: 4.0
+  sound_repeat_ticks: 20
+  highlight: true
+  require_killer_is_player: true
+  sound_volume: 4.0
+  sound_repeat_ticks: 20
+  highlight: true
+  require_killer_is_player: true
+
+wanted:
+  duration_seconds: 60
+  radius: 50
+  buff_percent: 50
+  min_nearby_to_trigger: 1
+  refresh_policy: any_trigger
+  logic_tick_ticks: 5
+  extra_spawns: { dynamic: true, for_1_nearby: 4, for_2_nearby: 3, for_3_nearby: 2 }
+  projectile:
+    base_damage: 2.0
+    throw_interval_ticks: 24   # fire rate (higher = slower). 20 ticks = 1s
+    throw_range: 30
+    velocity_multiplier: 1.0   # travel speed multiplier; independent of fire rate
+  spawn_min_distance: 8
+  spawn_max_distance: 16
+  chase: { enabled: true, speed: 0.5, keep_distance: 3.0 }
+  sounds:
+    start: ENTITY_WITHER_SPAWN
+    start_volume: 2.5
+    end: UI_TOAST_CHALLENGE_COMPLETE
+    end_volume: 2.2
+
+texts:
+  witness_title_larceny: "&cYou've been caught stealing!"
+  witness_title_murder:  "&cYou've been caught killing"
+  witness_nearby_title_larceny: "Someone was caught stealing"
+  witness_nearby_title_murder:  "Someone was caught killing"
+  wanted_start_title: "&c&lYou are now &4&lWANTED"
+  wanted_start_subtitle_trigger: "&eCharge: Larceny"
+  wanted_start_subtitle_nearby:  "&eCharge: Guilty of Association"
+  wanted_start_subtitle_murder:  "&eCrime: Murder"
+  wanted_bossbar: "&c&lYou are now &4&lWANTED. &fHide, fight, survive"
+  wanted_end_title: "&7You are no longer wanted"
+
+titles: { fade_in_ms: 900, stay_ms: 4200, fade_out_ms: 900 }
+
+safety:
+  teleport_cleanup_distance: 128
+  preventVillagerFriendlyFire: true
+  block_trades_when_hostile: true
+
+rearm:
+  mode: cooldown
+  cooldowns:
+    larceny_seconds: 600
+    murder_seconds: 30
+  track_world: false
+
+chest:
+  trigger_once: true
+
+witness_killed:
+  sound: AMBIENT_WARPED_FOREST_ADDITIONS
+  volume: 2.0
